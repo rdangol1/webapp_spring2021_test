@@ -43,6 +43,7 @@ function validateForm(){
         var txtCountry = document.querySelector("#txtCountry");
         if( txtCountry.value == ""){
             document.querySelector("#divCountryError").classList.remove("invisible");
+            divCountryError.innerHTML ="the field cannot be empty."
             txtCountry.classList.add("hasError");
             formIsValid = false;
         }
@@ -52,17 +53,7 @@ function validateForm(){
         }
     }
 
-    var elements =document.getElementsByTagName("input");
-    var invalidChars =['#', '!', '~', '<', '$', '>', '"', '`' ];
-    for (let i=0; i <elements.length; i++){
-        for (let j=0; i <invalidChars.length; j++){ 
-            if (elements[i].value.indexOf(invalidChars[j]) != -1){
-                elements[i].classList.add("hasError");
-                formIsValid = false;
-            }
-
-        }
-    }
+   
     return formIsValid;
 
 }
