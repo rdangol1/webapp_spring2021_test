@@ -26,7 +26,7 @@ function validateForm(){
         var todayDate = new Date();
         if(DoBDate >= todayDate){
             divDoBError.classList.remove("invisible");
-            divDoBError.innerHTML ="the Date of birth must be before today's date."
+            divDoBError.innerHTML =" Date of birth must be before today's date."
             DoB.classList.add("hasError");
             formIsValid = false;
         }
@@ -53,7 +53,23 @@ function validateForm(){
         }
     }
 
-   
+    var elements = document.getElementsByTagName("input");
+    var invalidChars = ['#', '!', '~', '<', '$', '>', '"', '`' ];
+    for (let i=0; i< elements.length; i++){
+        for (let j=0; j< invalidChars.length; j++){
+            if(elements[i].value.indexOf(invalidChars[j]) != -1){
+                document.querySelector("#divinvalidError").classList.remove("invisible");
+                divinvalidError.innerHTML ="the field has an invalid";
+                elements[i].classList.add("hasError");
+                formIsValid = false;
+            }
+            else {
+                elements[i].classList.remove("hasError");
+            }
+        
+        }
+        
+    }
     return formIsValid;
 
 }
